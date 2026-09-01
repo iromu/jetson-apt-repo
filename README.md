@@ -1,7 +1,7 @@
-# Jetson TX1 custom apt repository
+# Jetson Nano custom apt repository
 
 A small, **GPG-signed** static apt repository of pre-built `arm64` (aarch64)
-Debian packages for the Jetson TX1 (Ubuntu 18.04 / Bionic, L4T). Served
+Debian packages for the Jetson Nano (Ubuntu 18.04 / Bionic, L4T). Served
 statically from GitHub Pages — no server, no PPA, no build farm.
 
 ## Packages
@@ -9,7 +9,7 @@ statically from GitHub Pages — no server, no PPA, no build farm.
 | Package    | Version   | What it is |
 |------------|-----------|------------|
 | `nodejs24` | 24.20.0-1 | Node.js 24 runtime (from-source aarch64 build) + npm, npx, corepack and native-addon headers. Installed under `/usr`. |
-| `llama-cuda` | 5092    | llama.cpp built for the TX1's sm_53 GPU with CUDA 10.2. |
+| `llama-cuda` | 5092    | llama.cpp built for the Jetson Nano's sm_53 GPU with CUDA 10.2. |
 
 > `nodejs24` is named `nodejs24` (not `nodejs`) on purpose, so it does **not**
 > clash with Ubuntu 18.04's own `nodejs` (v10) package.
@@ -75,10 +75,10 @@ sudo apt-get update
 - **`/usr/bin/node` conflict:** `nodejs24` installs `/usr/bin/node`. If the
   distro `nodejs` (v10) package is already installed, remove it first to avoid
   a file-ownership conflict: `sudo apt-get remove nodejs`.
-- **Scope:** these are hand-built packages for the TX1 (aarch64). They are not
+- **Scope:** these are hand-built packages for the Jetson Nano (aarch64). They are not
   part of Ubuntu and receive no upstream security patching.
 - **Reproducibility:** the Node build is a local from-source aarch64
-  compilation; `llama-cuda` is built against the TX1's CUDA 10.2 / sm_53.
+  compilation; `llama-cuda` is built against the Jetson Nano's CUDA 10.2 / sm_53.
 
 ## Repository layout
 
