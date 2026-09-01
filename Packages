@@ -6,9 +6,9 @@ Installed-Size: 55980
 Depends: libc6, libstdc++6, libgcc1
 Filename: ./llama-cuda_5092_arm64.deb
 Size: 11909000
-MD5sum: f7b0bf26c3136852a98417ad4c490c80
-SHA1: 538bc626aef688886dea35ac16d5653b8b261027
-SHA256: cbdfafead646d1a10e37c1553dc5b62bab2df5758f7ec8b688f8edf8d36ba202
+MD5sum: 9346d67400a866cb07c91f9c62dd88e4
+SHA1: de88887bf526195f83b7e515d259f62915a9b82c
+SHA256: 02e68d175b6c72fd66b9f4e495a0cce0d1d59dc4b285f6fb94cb32062ca89119
 Section: science
 Priority: optional
 Description: llama.cpp v5092 with CUDA for Jetson Nano (Tegra X1)
@@ -29,10 +29,10 @@ Maintainer: wantez <wantez@localhost>
 Installed-Size: 212752
 Depends: libc6 (>= 2.17), libstdc++6
 Filename: ./nodejs24_24.20.0-1_arm64.deb
-Size: 32327468
-MD5sum: 139d5b6861073e814e4c6640c30c05e2
-SHA1: 05754e503c2af1507edb6fb2f68c9cfb4066e572
-SHA256: 6259b75a0b4fe5bdfeeed68d272a949dc8177a06b852049668676d594f5cada9
+Size: 32327636
+MD5sum: 27bf1ee453d1132d143e9e33439b36f2
+SHA1: ee3d67f636230715e61f8d1e00e6a8e19219ab88
+SHA256: 30a79d15b06f60fa8aa740f30b4e5f017221b4202cd95ae8762b4a11b28caa50
 Section: interpreters
 Priority: optional
 Homepage: https://nodejs.org/
