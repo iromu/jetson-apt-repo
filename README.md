@@ -22,18 +22,17 @@ statically from GitHub Pages — no server, no PPA, no build farm.
 
 ## Install
 
-Replace `<user>` and `<repo>` with your GitHub username and this repository's
-name. The base URL is then `https://<user>.github.io/<repo>/`.
-(Example: repo `ACME/jetson-packages` → `https://acme.github.io/jetson-packages/`.)
+The base URL is `https://iromu.github.io/jetson-apt-repo/` (served by GitHub
+Pages from the `master` branch).
 
 ```bash
 # 1) Add the signing public key to a dedicated keyring
 sudo install -d -m 0755 /etc/apt/keyrings
-sudo curl -fsSL https://<user>.github.io/<repo>/jetson.gpg \
+sudo curl -fsSL https://iromu.github.io/jetson-apt-repo/jetson.gpg \
      -o /etc/apt/keyrings/jetson.gpg
 
 # 2) Add the repository (flat layout, signed with the key above)
-echo "deb [signed-by=/etc/apt/keyrings/jetson.gpg] https://<user>.github.io/<repo>/ ./" \
+echo "deb [signed-by=/etc/apt/keyrings/jetson.gpg] https://iromu.github.io/jetson-apt-repo/ ./" \
      | sudo tee /etc/apt/sources.list.d/jetson.list
 
 # 3) Fetch the package index (verifies the signature + checksums)
