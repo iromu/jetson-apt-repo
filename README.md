@@ -16,9 +16,21 @@ statically from GitHub Pages — no server, no PPA, no build farm.
 
 ## Prerequisites
 
-- An **aarch64 (ARM 64-bit)** machine — these are not x86 binaries.
-- glibc ≥ 2.17 and `libstdc++6` (present on Ubuntu 18.04+).
-- `curl` (or `wget`) and a normal `apt`.
+All packages are `arm64` (aarch64) — they will not install on x86.
+
+| Package      | Runtime prerequisites |
+|--------------|-----------------------|
+| `nodejs24`   | glibc ≥ 2.17 (`libc6`), `libstdc++6` |
+| `llama-cuda` | `libc6`, `libstdc++6`, `libgcc1`, **plus** the CUDA 10.2 runtime (`libcudart.so.10.2`) and the Tegra GPU driver (`libcuda.so.1`) shipped with the board's L4T image |
+
+> The CUDA runtime and driver are provided by the Jetson's system image, not by
+> the package, so they are not in `llama-cuda`'s apt `Depends`.
+
+To consume the repo with apt you also need `curl` (or `wget`) and a normal `apt`.
+
+> Verified on a Jetson Nano (Ubuntu 18.04 / L4T R32.7.6, CUDA 10.2): aarch64,
+> glibc 2.27 — every prerequisite above is satisfied and both installed binaries
+> (`/usr/bin/node`, `/usr/bin/llama-cli`) resolve all of their libraries.
 
 ## Install
 
