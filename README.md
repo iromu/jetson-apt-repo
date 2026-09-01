@@ -1,0 +1,95 @@
+# Jetson TX1 custom apt repository
+
+A small, **GPG-signed** static apt repository of pre-built `arm64` (aarch64)
+Debian packages for the Jetson TX1 (Ubuntu 18.04 / Bionic, L4T). Served
+statically from GitHub Pages — no server, no PPA, no build farm.
+
+## Packages
+
+| Package    | Version   | What it is |
+|------------|-----------|------------|
+| `nodejs24` | 24.20.0-1 | Node.js 24 runtime (from-source aarch64 build) + npm, npx, corepack and native-addon headers. Installed under `/usr`. |
+| `llama-cuda` | 5092    | llama.cpp built for the TX1's sm_53 GPU with CUDA 10.2. |
+
+> `nodejs24` is named `nodejs24` (not `nodejs`) on purpose, so it does **not**
+> clash with Ubuntu 18.04's own `nodejs` (v10) package.
+
+## Prerequisites
+
+- An **aarch64 (ARM 64-bit)** machine — these are not x86 binaries.
+- glibc ≥ 2.17 and `libstdc++6` (present on Ubuntu 18.04+).
+- `curl` (or `wget`) and a normal `apt`.
+
+## Install
+
+Replace `<user>` and `<repo>` with your GitHub username and this repository's
+name. The base URL is then `https://<user>.github.io/<repo>/`.
+(Example: repo `ACME/jetson-packages` → `https://acme.github.io/jetson-packages/`.)
+
+```bash
+# 1) Add the signing public key to a dedicated keyring
+sudo install -d -m 0755 /etc/apt/keyrings
+sudo curl -fsSL https://<user>.github.io/<repo>/jetson.gpg \
+     -o /etc/apt/keyrings/jetson.gpg
+
+# 2) Add the repository (flat layout, signed with the key above)
+echo "deb [signed-by=/etc/apt/keyrings/jetson.gpg] https://<user>.github.io/<repo>/ ./" \
+     | sudo tee /etc/apt/sources.list.d/jetson.list
+
+# 3) Fetch the package index (verifies the signature + checksums)
+sudo apt-get update
+
+# 4) Install what you need
+sudo apt-get install nodejs24
+sudo apt-get install llama-cuda
+```
+
+`apt-get update` will report `OK` for this source only if the repository
+signature and file checksums validate. If it errors on the signature, the
+key at step 1 does not match the one that signed the repo — re-download
+`jetson.gpg`.
+
+## Updating
+
+When new package versions are published to the repo, just re-run:
+
+```bash
+sudo apt-get update
+sudo apt-get upgrade
+```
+
+There are **no automatic security updates** — review and apply updates
+deliberately.
+
+## Uninstall
+
+```bash
+sudo apt-get remove nodejs24
+sudo apt-get remove llama-cuda
+# optional: remove the repo + key
+sudo rm /etc/apt/sources.list.d/jetson.list /etc/apt/keyrings/jetson.gpg
+sudo apt-get update
+```
+
+## Notes / caveats
+
+- **`/usr/bin/node` conflict:** `nodejs24` installs `/usr/bin/node`. If the
+  distro `nodejs` (v10) package is already installed, remove it first to avoid
+  a file-ownership conflict: `sudo apt-get remove nodejs`.
+- **Scope:** these are hand-built packages for the TX1 (aarch64). They are not
+  part of Ubuntu and receive no upstream security patching.
+- **Reproducibility:** the Node build is a local from-source aarch64
+  compilation; `llama-cuda` is built against the TX1's CUDA 10.2 / sm_53.
+
+## Repository layout
+
+```
+Packages, Packages.gz     package index (generated with dpkg-scanpackages)
+Release                   unsigned index metadata
+InRelease                 clearsigned Release (what apt checks)
+Release.gpg               detached signature of Release
+jetson.gpg                binary public key (for /etc/apt/keyrings)
+jetson-public.asc         armored public key (human-readable)
+nodejs24_*.deb            the Node 24 package
+llama-cuda_*.deb          the llama.cpp package
+```

@@ -1,0 +1,9 @@
+# Safety net: the PRIVATE signing key must NEVER be committed.
+# Only the PUBLIC keys belong in this repo (jetson.gpg, jetson-public.asc).
+# The private key is kept at ~/jetson-signing-key.asc (outside this directory).
+*signing-key*
+*.key
+secrets/
+
+# Local scratch
+*.tmp

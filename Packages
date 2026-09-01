@@ -1,0 +1,49 @@
+Package: llama-cuda
+Version: 5092
+Architecture: arm64
+Maintainer: wantez <wantez@localhost>
+Installed-Size: 55980
+Depends: libc6, libstdc++6, libgcc1
+Filename: ./llama-cuda_5092_arm64.deb
+Size: 11909000
+MD5sum: f7b0bf26c3136852a98417ad4c490c80
+SHA1: 538bc626aef688886dea35ac16d5653b8b261027
+SHA256: cbdfafead646d1a10e37c1553dc5b62bab2df5758f7ec8b688f8edf8d36ba202
+Section: science
+Priority: optional
+Description: llama.cpp v5092 with CUDA for Jetson TX1 (Tegra X1)
+ Large Language Model inference engine with CUDA GPU support, built
+ for the Jetson TX1 (Tegra X1, sm_53, CUDA 10.2).
+ .
+ Provides the interactive llama-cli tool and its shared libraries
+ (libllama, libggml, libggml-cpu, libggml-cuda). Runs Qwen3 and other
+ GGUF models with all layers offloaded to the GPU.
+ .
+ Requires the Jetson L4T CUDA runtime (libcuda/cublas) to be present;
+ the CUDA libraries are provided by the L4T BSP, not by this package.
+
+Package: nodejs24
+Version: 24.20.0-1
+Architecture: arm64
+Maintainer: wantez <wantez@localhost>
+Installed-Size: 212752
+Depends: libc6 (>= 2.17), libstdc++6
+Filename: ./nodejs24_24.20.0-1_arm64.deb
+Size: 32327468
+MD5sum: 139d5b6861073e814e4c6640c30c05e2
+SHA1: 05754e503c2af1507edb6fb2f68c9cfb4066e572
+SHA256: 6259b75a0b4fe5bdfeeed68d272a949dc8177a06b852049668676d594f5cada9
+Section: interpreters
+Priority: optional
+Homepage: https://nodejs.org/
+Description: Node.js 24 JavaScript runtime (from-source aarch64 build)
+ Node.js is a platform built on Chrome's JavaScript runtime for easily
+ building fast, scalable network applications.
+ .
+ This is a LOCAL from-source build of Node.js v24.20.0 compiled on a Jetson
+ TX1 (aarch64 / Ubuntu 18.04 / L4T). The node binary is a native PIE build
+ (not the official prebuilt distribution). It bundles npm 11.19.0, npx,
+ corepack, and the native-addon (node-gyp) headers, all installed under /usr.
+ Package is named nodejs24 (not nodejs) to avoid clashing with the distro
+ nodejs package.
+
