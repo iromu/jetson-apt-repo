@@ -6,10 +6,11 @@ statically from GitHub Pages — no server, no PPA, no build farm.
 
 ## Packages
 
-| Package    | Version   | What it is |
-|------------|-----------|------------|
-| `nodejs24` | 24.20.0-1 | Node.js 24 runtime (from-source aarch64 build) + npm, npx, corepack and native-addon headers. Installed under `/usr`. |
-| `llama-cuda` | 5092    | llama.cpp built for the Jetson Nano's sm_53 GPU with CUDA 10.2. |
+| Package     | Version   | What it is |
+|-------------|-----------|------------|
+| `nodejs24`  | 24.20.0-1 | Node.js 24 runtime (from-source aarch64 build) + npm, npx, corepack and native-addon headers. Installed under `/usr`. |
+| `llama-cuda`| 5092      | llama.cpp built for the Jetson Nano's sm_53 GPU with CUDA 10.2. |
+| `python3.13`| 3.13.15-1 | CPython 3.13.15 (from-source aarch64 build, PGO+LTO) + stdlib, pip, and dev headers. Installed under `/usr/local`. |
 
 > `nodejs24` is named `nodejs24` (not `nodejs`) on purpose, so it does **not**
 > clash with Ubuntu 18.04's own `nodejs` (v10) package.
@@ -22,6 +23,7 @@ All packages are `arm64` (aarch64) — they will not install on x86.
 |--------------|-----------------------|
 | `nodejs24`   | glibc ≥ 2.17 (`libc6`), `libstdc++6` |
 | `llama-cuda` | `libc6`, `libstdc++6`, `libgcc1`, **plus** the CUDA 10.2 runtime (`libcudart.so.10.2`) and the Tegra GPU driver (`libcuda.so.1`) shipped with the board's L4T image |
+| `python3.13` | `libc6 (>= 2.17)`, `libpthread0`, `libdl1`, `libutil1`, `libm6` |
 
 > The CUDA runtime and driver are provided by the Jetson's system image, not by
 > the package, so they are not in `llama-cuda`'s apt `Depends`.
@@ -53,6 +55,7 @@ sudo apt-get update
 # 4) Install what you need
 sudo apt-get install nodejs24
 sudo apt-get install llama-cuda
+sudo apt-get install python3.13
 ```
 
 `apt-get update` will report `OK` for this source only if the repository
@@ -77,6 +80,7 @@ deliberately.
 ```bash
 sudo apt-get remove nodejs24
 sudo apt-get remove llama-cuda
+sudo apt-get remove python3.13
 # optional: remove the repo + key
 sudo rm /etc/apt/sources.list.d/jetson.list /etc/apt/keyrings/jetson.gpg
 sudo apt-get update
@@ -90,7 +94,11 @@ sudo apt-get update
 - **Scope:** these are hand-built packages for the Jetson Nano (aarch64). They are not
   part of Ubuntu and receive no upstream security patching.
 - **Reproducibility:** the Node build is a local from-source aarch64
-  compilation; `llama-cuda` is built against the Jetson Nano's CUDA 10.2 / sm_53.
+  compilation; `llama-cuda` is built against the Jetson Nano's CUDA 10.2 / sm_53;
+  `python3.13` is a CPython source build with `--enable-optimizations` (PGO+LTO).
+- **`python3.13` path:** installs to `/usr/local` (the source-build prefix), so it
+  does not conflict with the system `python3` (3.6). Add a symlink to get `python3`
+  resolving to 3.13: `ln -s /usr/local/bin/python3.13 ~/.local/bin/python3`.
 
 ## Repository layout
 
@@ -103,4 +111,5 @@ jetson.gpg                binary public key (for /etc/apt/keyrings)
 jetson-public.asc         armored public key (human-readable)
 nodejs24_*.deb            the Node 24 package
 llama-cuda_*.deb          the llama.cpp package
+python3.13_*.deb          the CPython 3.13 package
 ```
