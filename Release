@@ -4,18 +4,18 @@ Suite: stable
 Codename: jetson
 Architectures: arm64
 Components: main
-Description: Custom Jetson Nano (aarch64) packages: nodejs24, llama-cuda
-Date: Wed, 02 Sep 2026 00:03:55 +0100
-Valid-Until: Thu, 02 Sep 2027 00:03:55 +0100
+Description: Custom Jetson Nano (aarch64) packages: nodejs24, llama-cuda, python3.13
+Date: Fri, 04 Sep 2026 22:23:00 +0100
+Valid-Until: Sat, 04 Sep 2027 22:23:00 +0100
 MD5Sum:
- 5e54d1071fd2900b10c4a386e39e76f1 Packages
- fd7d67b464f32c6751c5ab568b1b9724 Packages.gz
+ d21696ad17cd9985b513570ad61ba799 Packages
+ e8033fd77598beca64c65ab3f7466f8d Packages.gz
 SHA1:
- e519b8455661f556cf41a30db8054106892c2b64 Packages
- ebad238f66dba3802321ac3ebfafa84c6e3c4cb6 Packages.gz
+ cc65c6523a1b3af5bb4ad444d3c2e5391ecbea86 Packages
+ c46540118269fffa2eba6fde748b2915d3ecdd63 Packages.gz
 SHA256:
- 0b99afc79e1a3e9ec4f87dd00578146d0cb60cd49b9ecf85b276baa54df2e6de Packages
- dca4fc918146d68b3028a5f41df23d32e27dc607ef92e18393c897d70752d91f Packages.gz
+ c83dd9838399b94b497f75db31e0f503988a2b9275b4a0d47b7fb07e53bf4b58 Packages
+ 37e509f2b51f68776a653574df88b52b4e83296a973f7df7bfe06dd7b098eea3 Packages.gz
 SHA512:
- c991dcd41c8853c471a61740d08366e4212d454c06fedded540a76ee8d8dd77e3d979652d8afb3ce38153e7a96c7bfc794590ff0f6e0934b938982955e4b777f Packages
- b19500960ae01bafc8478905ec74eb32c0baee97e06ca8b918f4c6b28be313cbda80e733da792470c03aca27caeb907cbc4f3c5fc2cf9fe8b3477e9092c202df Packages.gz
+ 8458cdfe1dad56f61ba56980e2c4cb77e647adf7cfff92d789c40025acf2456cf2baeeb72e9edfb125dd6667e6af3e720ec44634cde7d69e7aa59c2fff34388c Packages
+ b98ffdaefb408128b9a9406c68e2ef0795f9de0c2408f12dae1f44630cbc4163843b49599606193b3c8ed7c4df5cca6e8059fc030ace686eb70c78b8c4437c4b Packages.gz

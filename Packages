@@ -47,3 +47,27 @@ Description: Node.js 24 JavaScript runtime (from-source aarch64 build)
  Package is named nodejs24 (not nodejs) to avoid clashing with the distro
  nodejs package.
 
+Package: python3.13
+Version: 3.13.15-1
+Architecture: arm64
+Maintainer: wantez <wantez@localhost>
+Installed-Size: 198684
+Depends: libc6 (>= 2.17), libpthread0, libdl1, libutil1, libm6
+Filename: ./python3.13_3.13.15-1_arm64.deb
+Size: 31682496
+MD5sum: 98d0764dc56606958580f535809e895f
+SHA1: a7ccb1bc887f028cdaf89cb8a7e2fbf750ed59a6
+SHA256: 531b17db6aa1b0b1173ae382000c39dbee1fdf30199446a51dcfcce7f3e5a3fb
+Section: interpreters
+Priority: optional
+Homepage: https://www.python.org/
+Description: Python 3.13.15 interpreter (from-source aarch64 build)
+ CPython 3.13.15 built from source with --enable-optimizations (PGO+LTO)
+ on a Jetson Nano (aarch64 / Ubuntu 18.04 / L4T).
+ .
+ Installs to /usr/local. Includes the interpreter, standard library,
+ pip, and development headers. Does not conflict with the system
+ python3 (3.6) package.
+ .
+ This is a LOCAL from-source build, not the official Debian package.
+
