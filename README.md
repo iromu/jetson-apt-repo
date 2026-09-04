@@ -23,7 +23,7 @@ All packages are `arm64` (aarch64) — they will not install on x86.
 |--------------|-----------------------|
 | `nodejs24`   | glibc ≥ 2.17 (`libc6`), `libstdc++6` |
 | `llama-cuda` | `libc6`, `libstdc++6`, `libgcc1`, **plus** the CUDA 10.2 runtime (`libcudart.so.10.2`) and the Tegra GPU driver (`libcuda.so.1`) shipped with the board's L4T image |
-| `python3.13` | `libc6 (>= 2.17)`, `libpthread0`, `libdl1`, `libutil1`, `libm6` |
+| `python3.13` | `libc6 (>= 2.17)` |
 
 > The CUDA runtime and driver are provided by the Jetson's system image, not by
 > the package, so they are not in `llama-cuda`'s apt `Depends`.
