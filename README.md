@@ -9,7 +9,7 @@ statically from GitHub Pages — no server, no PPA, no build farm.
 | Package     | Version   | What it is |
 |-------------|-----------|------------|
 | `nodejs24`  | 24.20.0-1 | Node.js 24 runtime (from-source aarch64 build) + npm, npx, corepack and native-addon headers. Installed under `/usr`. |
-| `llama-cuda`| 5092      | llama.cpp built for the Jetson Nano's sm_53 GPU with CUDA 10.2. |
+| `llama-cuda`| 6709      | llama.cpp built for the Jetson Nano's sm_53 GPU with CUDA 10.2. v6709 adds LiquidAI LFM2 (dense) support; v5092 is still available as an older version. |
 | `python3.13`| 3.13.15-1 | CPython 3.13.15 (from-source aarch64 build, PGO+LTO) + stdlib, pip, and dev headers. Installed under `/usr/local`. |
 
 > `nodejs24` is named `nodejs24` (not `nodejs`) on purpose, so it does **not**
@@ -96,6 +96,8 @@ sudo apt-get update
 - **Reproducibility:** the Node build is a local from-source aarch64
   compilation; `llama-cuda` is built against the Jetson Nano's CUDA 10.2 / sm_53;
   `python3.13` is a CPython source build with `--enable-optimizations` (PGO+LTO).
+- **`llama-cuda` versions:** both `5092` and `6709` are published. `apt-get install llama-cuda`
+  pulls the newest (`6709`); pin an older one with `apt-get install llama-cuda=5092`.
 - **`python3.13` path:** installs to `/usr/local` (the source-build prefix), so it
   does not conflict with the system `python3` (3.6). Add a symlink to get `python3`
   resolving to 3.13: `ln -s /usr/local/bin/python3.13 ~/.local/bin/python3`.

@@ -22,6 +22,31 @@ Description: llama.cpp v5092 with CUDA for Jetson Nano (Tegra X1)
  Requires the Jetson L4T CUDA runtime (libcuda/cublas) to be present;
  the CUDA libraries are provided by the L4T BSP, not by this package.
 
+Package: llama-cuda
+Version: 6709
+Architecture: arm64
+Maintainer: wantez <wantez@localhost>
+Installed-Size: 77504
+Depends: libc6, libstdc++6, libgcc1
+Filename: ./llama-cuda_6709_arm64.deb
+Size: 13894552
+MD5sum: 1c94c2453eefba2de13f5fc6b0d14d2c
+SHA1: b1084b38f4e0693a4d37e791feb174f04a5b91fd
+SHA256: 0cb6039102b057fcd3b170bda573899d534933f6be2745f4f90fd95e9d1ad303
+Section: science
+Priority: optional
+Description: llama.cpp v6709 with CUDA for Jetson Nano (Tegra X1)
+ Large Language Model inference engine with CUDA GPU support, built
+ for the Jetson Nano (Tegra X1, sm_53, CUDA 10.2).
+ .
+ v6709 adds LiquidAI LFM2 (dense) support on top of v5092. Provides the
+ interactive llama-cli tool and its shared libraries (libllama, libggml,
+ libggml-cpu, libggml-cuda). Runs LFM2, Qwen3 and other GGUF models with
+ all layers offloaded to the GPU.
+ .
+ Requires the Jetson L4T CUDA runtime (libcuda/cublas) to be present;
+ the CUDA libraries are provided by the L4T BSP, not by this package.
+
 Package: nodejs24
 Version: 24.20.0-1
 Architecture: arm64
@@ -60,14 +85,10 @@ SHA1: 427073b5d77b30b1ca22c7828fd60effdd4fca5f
 SHA256: 70b385de9141496e84ca2071a228cc72b21dcedc8eb30c6aeae04473efdf2398
 Section: interpreters
 Priority: optional
-Homepage: https://www.python.org/
-Description: Python 3.13.15 interpreter (from-source aarch64 build)
- CPython 3.13.15 built from source with --enable-optimizations (PGO+LTO)
- on a Jetson Nano (aarch64 / Ubuntu 18.04 / L4T).
+Description: Python 3.13.15 interpreter (source build)
+ CPython 3.13.15 built from source with --enable-optimizations (PGO+LTO).
+ Installs to /usr/local. Includes interpreter, standard library,
+ pip, and development headers.
  .
- Installs to /usr/local. Includes the interpreter, standard library,
- pip, and development headers. Does not conflict with the system
- python3 (3.6) package.
- .
- This is a LOCAL from-source build, not the official Debian package.
+ This is a local build, not the official Debian package.
 
